@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Santri Café</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#d8d0c0;
+    color:#302c28;
+    font-family:'Montserrat',sans-serif;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.page{
+    width:100%;
+    max-width:980px;
+    margin:25px auto;
+    background:#fffdf8;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(50,40,30,.2);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+header{
+    height:82px;
+    background:#fffdf8;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 55px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    width:62px;
+    height:62px;
+
+    border:1px solid #8d8479;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:14px;
+    line-height:.9;
+}
+
+nav{
+    display:flex;
+    gap:45px;
+}
+
+nav a{
+    color:#403b36;
+    text-decoration:none;
+    font-size:13px;
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+    width:0;
+    height:1px;
+
+    left:50%;
+    bottom:-5px;
+
+    background:#6d5b49;
+
+    transition:.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+    left:0;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    min-height:390px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        rgba(220,216,201,.68),
+        rgba(203,201,183,.70)
+    ),
+    url("https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=1400&q=85");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.eyebrow{
+    font-size:10px;
+    letter-spacing:4px;
+    margin-bottom:12px;
+}
+
+h1{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:60px;
+
+    font-weight:600;
+
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:25px;
+}
+
+.btn{
+
+    display:inline-block;
+
+    padding:11px 55px;
+
+    border-radius:30px;
+
+    background:#bd9e7c;
+
+    border:1px solid rgba(80,70,60,.3);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#6d5b49;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu{
+    background:#fffdf8;
+
+    padding:55px 50px 50px;
+
+    text-align:center;
+}
+
+.section-title{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:43px;
+
+    font-weight:600;
+
+    margin-bottom:35px;
+}
+
+.menu-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px 22px;
+}
+
+.item{
+    position:relative;
+}
+
+.photo-frame{
+
+    height:205px;
+
+    padding:8px;
+
+    background:white;
+
+    border:1px solid #ded8cd;
+
+    border-radius:90px 90px 0 0;
+
+    overflow:hidden;
+
+    box-shadow:0 2px 8px rgba(70,60,50,.08);
+}
+
+.photo-frame img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:80px 80px 0 0;
+}
+
+.item h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:19px;
+
+    margin-top:13px;
+
+    font-weight:600;
+}
+
+.size{
+
+    font-size:10px;
+
+    color:#777067;
+
+    margin-top:2px;
+}
+
+.price{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-top:5px;
+}
+
+.spark{
+
+    position:absolute;
+
+    left:-10px;
+
+    top:95px;
+
+    color:#c7a994;
+
+    font-size:17px;
+}
+
+.more{
+
+    margin-top:42px;
+
+    background:#dbe0d4;
+
+    color:#4d4b46;
+
+    border-color:#9da295;
+}
+
+/* =========================
+   PROMO
+========================= */
+
+.promo{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    min-height:360px;
+
+    background:#dce3d7;
+}
+
+.promo-img{
+
+    min-height:360px;
+
+    background:
+
+    url("https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85")
+
+    center/cover;
+}
+
+.promo-content{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px;
+}
+
+.promo-content h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:50px;
+
+    margin-bottom:12px;
+}
+
+.promo-content p{
+
+    font-size:12px;
+
+    line-height:1.8;
+
+    letter-spacing:1px;
+}
+
+.promo-price{
+
+    font-size:31px !important;
+
+    font-weight:500;
+
+    margin:10px 0 24px;
+
+    letter-spacing:0 !important;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    background:#fffdf8;
+
+    text-align:center;
+
+    padding:35px;
+
+    font-size:11px;
+
+    line-height:1.7;
+
+    color:#746b61;
+
+    letter-spacing:1px;
+}
+
+/* =========================
+   RESPONSIVE HP
+========================= */
+
+@media(max-width:720px){
+
+    .page{
+        margin:0;
+    }
+
+    header{
+
+        height:auto;
+
+        padding:18px 20px;
+
+        gap:15px;
+    }
+
+    .logo{
+
+        width:50px;
+        height:50px;
+
+        font-size:11px;
+
+        flex-shrink:0;
+    }
+
+    nav{
+
+        gap:15px;
+
+        justify-content:flex-end;
+
+        flex-wrap:wrap;
+    }
+
+    nav a{
+        font-size:10px;
+    }
+
+    .hero{
+        min-height:330px;
+    }
+
+    h1{
+        font-size:44px;
+    }
+
+    .hero p{
+        font-size:10px;
+    }
+
+    .menu{
+
+        padding:45px 20px;
+    }
+
+    .section-title{
+        font-size:37px;
+    }
+
+    .menu-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:30px 14px;
+    }
+
+    .photo-frame{
+        height:190px;
+    }
+
+    .item h3{
+        font-size:17px;
+    }
+
+    .promo{
+
+        grid-template-columns:1fr;
+    }
+
+    .promo-img{
+        min-height:300px;
+    }
+
+    .promo-content{
+        min-height:300px;
+    }
+
+    .promo-content h2{
+        font-size:43px;
+    }
+
+}
+
+@media(max-width:390px){
+
+    nav{
+        gap:9px;
+    }
+
+    .menu-grid{
+        gap:25px 10px;
+    }
+
+    .photo-frame{
+        height:160px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header>
+
+    <div class="logo">
+        Santri<br>
+        Caffe
+    </div>
+
+    <nav>
+
+        <a href="#menu">
+            Menu
+        </a>
+
+        <a href="#lokasi">
+            Lokasi
+        </a>
+
+        <a href="#kontak">
+            Kontak
+        </a>
+
+        <a href="#cerita">
+            Cerita
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="cerita">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Halal CAFÉ • DESSERT • DRINK
+        </div>
+
+        <h1>
+            Café Korean Style
+        </h1>
+
+        <p>
+            Pengalaman manis dengan sentuhan oriental
+        </p>
+
+        <a href="#menu" class="btn">
+            LIHAT MENU
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<section class="menu" id="menu">
+
+    <h2 class="section-title">
+        Menú
+    </h2>
+
+
+    <div class="menu-grid">
+
+
+        <!-- MENU 1 -->
+
+        <article class="item">
+
+            <span class="spark">
+                ✦
+            </span>
+
+            <div class="photo-frame">
+
+                <img
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=85"
+                alt="Latte">
+
+            </div>
+
+            <h3>
+                Latte
+            </h3>
+
+            <div class="size">
+                250 ml
+            </div>
+
+            <div class="price">
+                Rp65.000
+            </div>
+
+        </article>
+
+
+        <!-- MENU 2 -->
+
+        <article class="item">
+
+            <span class="spark">
+                ✦
+            </span>
+
+            <div class="photo-frame">
+
+                <img
+                src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=500&q=85"
+                alt="Strawberry">
+
+            </div>
+
+            <h3>
+                Strawberry
+            </h3>
+
+            <div class="size">
+                250 ml
+            </div>
+
+            <div class="price">
+                Rp72.000
+            </div>
+
+        </article>
+
+
+        <!-- MENU 3 -->
+
+        <article class="item">
+
+            <span class="spark">
+                ✦
+            </span>
+
+            <div class="photo-frame">
+
+                <img
+                src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=500&q=85"
+                alt="Strawberry Milkshake">
+
+            </div>
+
+            <h3>
+                Strawberry
+            </h3>
+
+            <div class="size">
+                250 ml
+            </div>
+
+            <div class="price">
+                Rp80.000
+            </div>
+
+        </article>
+
+
+        <!-- MENU 4 -->
+
+        <article class="item">
+
+            <span class="spark">
+                ✦
+            </span>
+
+            <div class="photo-frame">
+
+                <img
+                src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=85"
+                alt="Affogato">
+
+            </div>
+
+            <h3>
+                Affogato
+            </h3>
+
+            <div class="size">
+                250 ml
+            </div>
+
+            <div class="price">
+                Rp65.000
+            </div>
+
+        </article>
+
+
+        <!-- MENU 5 -->
+
+        <article class="item">
+
+            <span class="spark">
+                ✦
+            </span>
+
+            <div class="photo-frame">
+
+                <img
+                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=85"
+                alt="Strawberry Cake">
+
+            </div>
+
+            <h3>
+                Strawberry Cake
+            </h3>
+
+            <div class="size">
+                1 slice
+            </div>
+
+            <div class="price">
+                Rp65.000
+            </div>
+
+        </article>
+
+
+        <!-- MENU 6 -->
+
+        <article class="item">
+
+            <span class="spark">
+                ✦
+            </span>
+
+            <div class="photo-frame">
+
+                <img
+                src="https://images.unsplash.com/photo-1558326567-98ae2405596b?auto=format&fit=crop&w=500&q=85"
+                alt="Macarons">
+
+            </div>
+
+            <h3>
+                Macarons
+            </h3>
+
+            <div class="size">
+                Varian
+            </div>
+
+            <div class="price">
+                Rp72.000
+            </div>
+
+        </article>
+
+
+        <!-- MENU 7 -->
+
+        <article class="item">
+
+            <span class="spark">
+                ✦
+            </span>
+
+            <div class="photo-frame">
+
+                <img
+                src="https://images.unsplash.com/photo-1506459225024-1428097a7e18?auto=format&fit=crop&w=500&q=85"
+                alt="Cinnamon Rolls">
+
+            </div>
+
+            <h3>
+                Cinnamon Rolls
+            </h3>
+
+            <div class="size">
+                1 box
+            </div>
+
+            <div class="price">
+                Rp80.000
+            </div>
+
+        </article>
+
+
+        <!-- MENU 8 -->
+
+        <article class="item">
+
+            <span class="spark">
+                ✦
+            </span>
+
+            <div class="photo-frame">
+
+                <img
+                src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=500&q=85"
+                alt="Tiramisu">
+
+            </div>
+
+            <h3>
+                Tiramisu
+            </h3>
+
+            <div class="size">
+                1 slice
+            </div>
+
+            <div class="price">
+                Rp65.000
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <a
+    href="#kontak"
+    class="btn more">
+
+        LIHAT MENU LAINNYA
+
+    </a>
+
+</section>
+
+
+<!-- =========================
+     PROMO
+========================= -->
+
+<section class="promo" id="lokasi">
+
+
+    <div class="promo-img">
+    </div>
+
+
+    <div class="promo-content">
+
+        <div>
+
+            <div class="eyebrow">
+                SPECIAL PROMO
+            </div>
+
+            <h2>
+                Selasa 2X1
+            </h2>
+
+            <p>
+                Untuk pembelian 2 Strawberry
+                <br>
+                Milkshake
+            </p>
+
+            <p class="promo-price">
+                Rp80.000
+            </p>
+
+            <a
+            href="#kontak"
+            class="btn">
+
+                PESAN SEKARANG
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer id="kontak">
+
+    <strong>
+        SEOUL CREAM CAFÉ
+    </strong>
+
+    <br><br>
+
+    Jl. disana No. 12 • Jember • Indonesia
+
+    <br>
+
+    Instagram: @santriboba&tea.cafe
+
+</footer>
+
+
+</div>
+
+</body>
+</html>
